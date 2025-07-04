@@ -32,6 +32,7 @@ rpc=1
 admit=0.1
 tune=0
 
+export LD_LIBRARY_PATH="/usr/local/lib"
 
 for uni in 0
 do 
@@ -42,7 +43,7 @@ do
             for t in 1
             do
                 ./restartMemc.sh
-                sudo ./newbench $nodenum ${read[$op]} ${insert[$op]} ${update[$op]} ${delete[$op]} ${range[$op]} ${threads[$t]} ${mem_threads[1]} ${cache[3]} $uni ${zipf[0]} $bulk $warmup $runnum $correct $timebase $early $idx $rpc $admit $tune 36
+                sudo env LD_LIBRARY_PATH="/usr/local/lib" ./newbench $nodenum ${read[$op]} ${insert[$op]} ${update[$op]} ${delete[$op]} ${range[$op]} ${threads[$t]} ${mem_threads[1]} ${cache[3]} $uni ${zipf[0]} $bulk $warmup $runnum $correct $timebase $early $idx $rpc $admit $tune 36
                 sleep 2
             done
         done
