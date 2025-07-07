@@ -21,7 +21,7 @@ zipf=(0.99)
 bulk=50
 warmup=10
 runnum=50
-nodenum=2
+nodenum=2  # change this to 1 to allow running benchmark on single node
 
 #other
 correct=0

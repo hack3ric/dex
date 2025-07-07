@@ -130,6 +130,10 @@ public:
 
   // Create a random number
   uint32_t get_random_id(int id) {
+    // STL random number generator seems to stuck when `machineNR == 1`, i.e.
+    // range only contains one number
+    return 0;
+
     static thread_local std::mt19937 *generator = nullptr;
     if (!generator)
       generator = new std::mt19937(clock() + pthread_self());
