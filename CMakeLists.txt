@@ -27,6 +27,8 @@ set(LINKS_FLAGS "-lcityhash -lboost_system -lboost_coroutine -lpthread -libverbs
     # set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 # endif()
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(INCLUDE_BASE ${PROJECT_SOURCE_DIR}/include)
 include_directories(${INCLUDE_BASE})
 
@@ -41,10 +43,16 @@ link_libraries(DEX)
 
 # test
 
-file(GLOB TEST_SRC ${PROJECT_SOURCE_DIR}/test/*.cpp)
-foreach (TEST ${TEST_SRC})
-    get_filename_component(TEST_NAME ${TEST} NAME_WE)
-    add_executable(${TEST_NAME} ${TEST})
-    target_link_libraries(${TEST_NAME} ${LINKS_FLAGS})
-endforeach()
+add_executable(newbench ${PROJECT_SOURCE_DIR}/test/newbench.cpp)
+target_link_libraries(newbench ${LINKS_FLAGS})
+
+add_library(pentathlon-bm-target-dex ${PROJECT_SOURCE_DIR}/test/pentathlon_bm_target_dex.cpp)
+target_link_libraries(newbench ${LINKS_FLAGS})
+
+# file(GLOB TEST_SRC ${PROJECT_SOURCE_DIR}/test/*.cpp)
+# foreach (TEST ${TEST_SRC})
+#     get_filename_component(TEST_NAME ${TEST} NAME_WE)
+#     add_executable(${TEST_NAME} ${TEST})
+#     target_link_libraries(${TEST_NAME} ${LINKS_FLAGS})
+# endforeach()
 

@@ -37,6 +37,8 @@ public:
 
   virtual void get_statistic() {}
 
+  virtual ~tree_api() = default;
+
   // Do most initialization work here
   tree_api *create_tree() { return nullptr; }
 };
