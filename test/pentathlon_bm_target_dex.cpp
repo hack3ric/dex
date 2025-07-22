@@ -99,6 +99,11 @@ void *pth_bm_target_create() {
     break;
   }
 
+  dsm->resetThread();
+  dsm->registerThread();
+  tree->reset_buffer_pool(true);
+  tree->get_newest_root();
+
   return tree;
 }
 
