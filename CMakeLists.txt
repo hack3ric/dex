@@ -46,7 +46,7 @@ link_libraries(DEX)
 add_executable(newbench ${PROJECT_SOURCE_DIR}/test/newbench.cpp)
 target_link_libraries(newbench ${LINKS_FLAGS})
 
-add_library(pentathlon-bm-target-dex SHARED ${PROJECT_SOURCE_DIR}/test/pentathlon_bm_target_dex.cpp)
+add_library(pentathlon-bm-target-dex ${COMMON_FILE} ${PROJECT_SOURCE_DIR}/test/pentathlon_bm_target_dex.cpp)
 target_link_libraries(newbench ${LINKS_FLAGS})
 
 # file(GLOB TEST_SRC ${PROJECT_SOURCE_DIR}/test/*.cpp)
