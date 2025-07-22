@@ -107,6 +107,10 @@ void *pth_bm_target_create() {
   return tree;
 }
 
+void pth_bm_target_init_thread(void *target) {
+  cachepush::global_dsm_->registerThread();
+}
+
 void pth_bm_target_destroy(void *target) {
   auto *tree = reinterpret_cast<tree_api<Key, Value> *>(target);
   delete tree;
