@@ -1583,7 +1583,7 @@ public:
       auto inner = static_cast<BTreeInner<Key> *>(cur_node);
       // SMO logic with megaNode
       // FIXME(BT): Not consider the root is not shared (single compute node)
-      if (inner->isFull() && (!inner->isShared())) {
+      if (inner->isFull() && (!inner->isShared()) && parent != super_root_) {
         // Need to differentiate shared node and non-shared node
         assert(parent != super_root_);
         if (parent->isShared()) {
