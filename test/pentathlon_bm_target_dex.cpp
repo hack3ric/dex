@@ -82,6 +82,7 @@ void *pth_bm_target_create() {
     tree = new cachepush::BTree<Key, Value>(
         dsm, 0, cache_mb, rpc_rate, admission_rate, sharding, cluster_num);
     partitioned = true;
+    tree->set_bound(std::numeric_limits<Key>::min(), std::numeric_limits<Key>::max());
   } break;
   case 1: // Sherman
     tree = new sherman_wrapper<Key, Value>(dsm, 0, cache_mb);
