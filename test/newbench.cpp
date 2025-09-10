@@ -1052,6 +1052,7 @@ int main(int argc, char *argv[]) {
       ++cur_run;
     } // multiple run loop
   }
+  for (;;);
 
   std::cout << "Before barrier finish" << std::endl;
   dsm->barrier("finish");
