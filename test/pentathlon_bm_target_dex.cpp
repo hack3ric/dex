@@ -24,7 +24,7 @@ int cache_mb = 256; // cache=(0 64 128 256 512 1024)
 int bulk_load_num = 50 * 1000 * 1000;
 int warmup_num = 10 * 1000 * 1000;
 int op_num = 50 * 1000 * 1000;
-int kMaxThread = 36;
+int kMaxThread = 1;
 
 int kKeySpace =
     bulk_load_num + ceil((op_num + warmup_num) * (kInsertRatio / 100.0)) + 1000;
@@ -50,9 +50,9 @@ void *pth_bm_target_create() {
   // numa_set_preferred(0);
 
   DSMConfig config;
-  config.machineNR = 2;
-  config.memThreadCount = 4;
-  config.computeNR = 1;
+  config.machineNR = kNodeCount;
+  config.memThreadCount = memThreadCount;
+  config.computeNR = CNodeCount;
   config.index_type = 0; // DEX
 
   auto dsm = DSM::getInstance(config);
