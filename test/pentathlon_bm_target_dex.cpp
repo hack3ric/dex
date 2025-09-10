@@ -20,7 +20,7 @@ int kNodeCount = 2;
 int kInsertRatio = 0;
 int totalThreadCount = 2; // threads=(0 2 18 36 72 108 144)
 int memThreadCount = 4;
-int cache_mb = 256; // cache=(0 64 128 256 512 1024)
+int cache_mb = 128; // cache=(0 64 128 256 512 1024)
 int bulk_load_num = 50 * 1000 * 1000;
 int warmup_num = 10 * 1000 * 1000;
 int op_num = 50 * 1000 * 1000;
