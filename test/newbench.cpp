@@ -467,7 +467,8 @@ void generate_index() {
     int cluster_num = CNodeCount;
     sharding.push_back(std::numeric_limits<Key>::min());
     for (int i = 0; i < cluster_num - 1; ++i) {
-      sharding.push_back((threadKSpace * kMaxThread) + sharding[i]);
+      // sharding.push_back((threadKSpace * kMaxThread) + sharding[i]);
+      sharding.push_back(std::numeric_limits<Key>::min());
       std::cout << "CNode " << i << ", left bound = " << sharding[i]
                 << ", right bound = " << sharding[i + 1] << std::endl;
     }
