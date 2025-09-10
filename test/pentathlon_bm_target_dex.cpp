@@ -32,8 +32,8 @@ int threadKSpace = kKeySpace / totalThreadCount;
 int CNodeCount = (totalThreadCount % kMaxThread == 0)
                      ? (totalThreadCount / kMaxThread)
                      : (totalThreadCount / kMaxThread + 1);
-double rpc_rate = 0;
-double admission_rate = 1;
+double rpc_rate = 0.99;
+double admission_rate = 0.1;
 
 int thread_op_num = op_num / totalThreadCount;
 int thread_warmup_num = warmup_num / totalThreadCount;
