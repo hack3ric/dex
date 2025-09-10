@@ -83,6 +83,12 @@ void *pth_bm_target_create() {
     tree = new cachepush::BTree<Key, Value>(
         dsm, 0, cache_mb, rpc_rate, admission_rate, sharding, cluster_num);
     partitioned = true;
+    std::vector<uint64_t> bound;
+    for (int i = 0; i < cluster_num - 1; ++i) {
+      bound.push_back(sharding[i + 1]);
+    }
+    tree->set_shared(bound);
+    tree->get_basic();
     tree->set_bound(std::numeric_limits<Key>::min(), std::numeric_limits<Key>::max());
   } break;
   case 1: // Sherman
