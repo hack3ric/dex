@@ -816,7 +816,7 @@ int main(int argc, char *argv[]) {
   uint64_t total_cluster_tp = 0;
   uint64_t straggler_cluster_tp = 0;
   uint64_t collect_times = 0;
-  if (node_id < CNodeCount) {
+  if (node_id > CNodeCount) {
     dsm->registerThread();
     generate_index();
 
