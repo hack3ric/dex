@@ -820,10 +820,10 @@ int main(int argc, char *argv[]) {
     dsm->registerThread();
     generate_index();
 
-    dsm->barrier("bulkload", CNodeCount);
-    dsm->resetThread();
-    generate_workload();
-    bulk_load();
+    // dsm->barrier("bulkload", CNodeCount);
+    // dsm->resetThread();
+    // generate_workload();
+    // bulk_load();
 
     if (auto_tune) {
       run_times = admission_rate_vec.size() * rpc_rate_vec.size();
@@ -842,9 +842,13 @@ int main(int argc, char *argv[]) {
       dsm->resetThread();
       dsm->registerThread();
       tree->reset_buffer_pool(true);
-      dsm->barrier(std::string("benchmark") + std::to_string(cur_run),
-                   CNodeCount);
+      // dsm->barrier(std::string("benchmark") + std::to_string(cur_run),
+      //              CNodeCount);
       tree->get_newest_root();
+
+      // PTH: we are done now
+      for (;;);
+
       // In warmup phase, we do not use RPC
       tree->set_rpc_ratio(0);
       if (auto_tune) {

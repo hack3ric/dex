@@ -16,7 +16,7 @@
 // as original newbench.
 
 // from run.sh
-int kNodeCount = 1;
+int kNodeCount = 2;
 int kInsertRatio = 0;
 int totalThreadCount = 2; // threads=(0 2 18 36 72 108 144)
 int memThreadCount = 4;
