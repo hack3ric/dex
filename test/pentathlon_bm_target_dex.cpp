@@ -50,7 +50,7 @@ void *pth_bm_target_create() {
   // numa_set_preferred(0);
 
   DSMConfig config;
-  config.machineNR = 1;
+  config.machineNR = 2;
   config.memThreadCount = 4;
   config.computeNR = 1;
   config.index_type = 0; // DEX
