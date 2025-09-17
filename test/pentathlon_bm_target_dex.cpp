@@ -16,7 +16,13 @@
 // as original newbench.
 
 // from run.sh
+#if defined(DEX_COMPILE_DEX)
 int kNodeCount = 2;
+#elif defined(DEX_COMPILE_SHERMAN)
+int kNodeCount = 1;
+#else
+#error please define DEX_COMPILE_DEX or DEX_COMPILE_SHERMAN
+#endif
 int kInsertRatio = 0;
 int totalThreadCount = 2; // threads=(0 2 18 36 72 108 144)
 int memThreadCount = 4;
@@ -53,7 +59,11 @@ void *pth_bm_target_create() {
   config.machineNR = kNodeCount;
   config.memThreadCount = memThreadCount;
   config.computeNR = CNodeCount;
+#if defined(DEX_COMPILE_DEX)
   config.index_type = 0; // DEX
+#elif defined(DEX_COMPILE_SHERMAN)
+  config.index_type = 1; // Sherman
+#endif
 
   auto dsm = DSM::getInstance(config);
   cachepush::global_dsm_ = dsm;
