@@ -1,4 +1,5 @@
 #include <numa.h>
+#include <iostream>
 
 #include "Common.h"
 #include "Config.h"
@@ -50,10 +51,22 @@ inline Key to_key(uint64_t k) {
   return (CityHash64((char *)&k, sizeof(k)) + 1) % kKeySpace;
 }
 
+long get_long_from_env(const char *env_name, long default_value) {
+    char *env = getenv(env_name);
+    if (env) {
+        return strtol(env, NULL, 10);
+    } else {
+        return default_value;
+    }
+}
+
 extern "C" {
 void *pth_bm_target_create() {
   // bindCore(0);
   // numa_set_preferred(0);
+
+  cache_mb = get_long_from_env("DEX_CACHE_MB", 128);
+  std::cout << "DEX/Sherman cache size: " << cache_mb << " MB" << std::endl;
 
   DSMConfig config;
   config.machineNR = kNodeCount;
