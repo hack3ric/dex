@@ -47,10 +47,10 @@ add_executable(newbench ${PROJECT_SOURCE_DIR}/test/newbench.cpp)
 target_link_libraries(newbench ${LINKS_FLAGS})
 
 add_library(pentathlon-bm-target-dex ${COMMON_FILE} ${PROJECT_SOURCE_DIR}/test/pentathlon_bm_target_dex.cpp)
-target_compile_definitions(pth_bm_dex PUBLIC DEX_COMPILE_DEX)
+target_compile_definitions(pentathlon-bm-target-dex PUBLIC DEX_COMPILE_DEX)
 
 add_library(pentathlon-bm-target-sherman ${COMMON_FILE} ${PROJECT_SOURCE_DIR}/test/pentathlon_bm_target_dex.cpp)
-target_compile_definitions(pth_bm_dex PUBLIC DEX_COMPILE_SHERMAN)
+target_compile_definitions(pentathlon-bm-target-sherman PUBLIC DEX_COMPILE_SHERMAN)
 
 # file(GLOB TEST_SRC ${PROJECT_SOURCE_DIR}/test/*.cpp)
 # foreach (TEST ${TEST_SRC})
